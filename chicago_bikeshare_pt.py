@@ -25,11 +25,11 @@ print(data_list[0])
 print("Linha 1: ")
 print(data_list[1])
 
-input("Aperte Enter para continuar...")
+input("Aperte Enter para continuar...") 
 # TAREFA 1
 # TODO: Imprima as primeiras 20 linhas usando um loop para identificar os dados.
-for val in data_list[:20]:
-    print(val)
+for row in data_list[:20]:
+    print(row)
 print("\n\nTAREFA 1: Imprimindo as primeiras 20 amostras")
 
 # Vamos mudar o data_list para remover o cabeçalho dele.
@@ -41,8 +41,8 @@ data_list = data_list[1:]
 input("Aperte Enter para continuar...")
 # TAREFA 2
 # TODO: Imprima o `gênero` das primeiras 20 linhas
-for val in data_list[:20]:
-    print(val[6])
+for row in data_list[:20]:
+    print(row[6])
 
 print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
 
@@ -73,8 +73,8 @@ def column_to_list(data, index):
     '''
     column_list = []
     # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
-    for val in data:
-        column_list.append(val[index])
+    for row in data:
+        column_list.append(row[index])
     
     return column_list
 
@@ -95,10 +95,10 @@ input("Aperte Enter para continuar...")
 # TODO: Conte cada gênero. Você não deveria usar uma função parTODO isso.
 male = 0
 female = 0
-for val in data_list:
-    if(val[6] == 'Male'):
+for row in data_list:
+    if(row[6] == 'Male'):
         male += 1
-    elif(val[6] == 'Female'):
+    elif(row[6] == 'Female'):
         female += 1
 
 # Verificando o resultado
@@ -134,10 +134,10 @@ def count_gender(data_list):
     '''
     male = 0
     female = 0
-    for val in data_list:
-        if(val[6] == 'Male'):
+    for row in data_list:
+        if(row[6] == 'Male'):
             male += 1
-        elif(val[6] == 'Female'):
+        elif(row[6] == 'Female'):
             female += 1
     return [male, female]
 
@@ -152,7 +152,6 @@ assert count_gender(data_list)[0] == 935854 and count_gender(data_list)[1] == 29
 # -----------------------------------------------------
 
 input("Aperte Enter para continuar...")
-# Agora que nós podemos contar os usuários, qual gênero é mais prevalente?
 # TAREFA 6
 # TODO: Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
 # Esperamos ver "Masculino", "Feminino", ou "Igual" como resposta.
@@ -176,13 +175,9 @@ def most_popular_gender(data_list):
     '''
     male = 0
     female = 0
-    for val in data_list:
-        if(val[6] == 'Male'):
-            male += 1
-        elif(val[6] == 'Female'):
-            female += 1
-    
+    male, female = count_gender(data_list)
     answer = ""
+    
     if(male > female):
         answer = "Masculino"
     elif(female > male):
@@ -253,12 +248,13 @@ for val in list(map(int, trip_duration_list)):
 
 mean_trip = round(temp / len(trip_duration_list))
 
+def calculate_median_trip(trip_duration_list):
+    _median =  list(map(int, trip_duration_list))
+    _median.sort()
+    index_median = round(len(_min_trip) / 2)
+    return _median[index_median]
 
-_median =  list(map(int, trip_duration_list))
-_median.sort()
-index_median = round(len(_min_trip) / 2)
-median_trip = _median[index_median]
-
+median_trip = calculate_median_trip(trip_duration_list)
 
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
