@@ -243,8 +243,8 @@ max_trip = _max_trip[0]
 
 mean_trip = 0.
 temp = 0
-for val in list(map(int, trip_duration_list)):
-    temp += val
+for row in list(map(int, trip_duration_list)):
+    temp += row
 
 mean_trip = round(temp / len(trip_duration_list))
 
